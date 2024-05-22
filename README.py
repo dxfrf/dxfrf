@@ -22,15 +22,9 @@ def on_button_click_x():
   root.destroy()
   current_window.geometry('1000x800')
 
-  def on_button_click():
-    print("Button was clicked!")
+  button = Button(root, text="Click Me", command=button_clicked)
 
-
-# Create a button widget
-button = tk.Button(root, text="Click Me", command=on_button_click)
-
-# Pack the button into the window
-button.pack(pady=20)
+  button.pack()
 
 
 
