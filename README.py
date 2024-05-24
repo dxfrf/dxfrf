@@ -1,73 +1,82 @@
 import tkinter as tk
 
 
-def center_window(root, width=500, height=500):
-  """
-  This function centers the root window on the screen.
-  """
-  screen_width = root.winfo_screenwidth()
-  screen_height = root.winfo_screenheight()
+def center_window(window, width=500, height=500):
+    """
+    Функция центрирует окно на экране.
+    """
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
 
-  x = (screen_width - width) // 2
-  y = (screen_height - height) // 2
+    x = (screen_width - width) // 2
+    y = (screen_height - height) // 2
 
-  root.geometry(f'{width}x{height}+{x}+{y}')
+    window.geometry(f'{width}x{height}+{x}+{y}')
+
 
 def on_button_click_x():
+    # Создаем новое окно
+    current_window = tk.Toplevel(root)
+    current_window.title("Окно X")
 
+    # Устанавливаем цвет фона серым
+    current_window.config(bg='gray')
 
-  root.config(bg='gray')
-  current_window: tk = tk.Tk()
-  current_window.title("Initial Window")
-  root.destroy()
-  current_window.geometry('1000x800')
+    # Центрируем и изменяем размер окна
+    center_window(current_window, 1000, 800)
 
-  button = Button(root, text="Click Me", command=button_clicked)
-
-  button.pack()
-
-
-
-  current_window.mainloop()
-
+    # Создаем кнопку в новом окне
+    button = tk.Button(current_window,command=on_button_clicked,pady=100,padx=150, anchor="nw")# justify="left")
+    button.pack(anchor=tk.NW)
+    button = tk.Button(current_window, command=on_button_clicked, pady=100, padx=150, anchor="nw")  # justify="left")
+    button.pack(anchor=tk.NW)
+    button = tk.Button(current_window, command=on_button_clicked, pady=100, padx=150, anchor="nw")  # justify="left")
+    button.pack(anchor=tk.NW)
+    button = tk.Button(current_window, command=on_button_clicked, pady=135, padx=150, anchor="nw")
+    button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
+    button = tk.Button(current_window, command=on_button_clicked, pady=135, padx=150, anchor="nw")
+    button.place(relx=0.5, rely=0.1, anchor=tk.CENTER)
 
 def on_button_click_y():
-  current_window: tk = tk.Tk()
-  current_window.title("Initial Window")
-  root.destroy()
-  current_window.geometry('1000x800')
+    # Создаем новое окно
+    current_window = tk.Toplevel(root)
+    current_window.title("Окно Y")
 
-  current_window.mainloop()
+    # Устанавливаем цвет фона серым
+    current_window.config(bg='gray')
 
-  # Center and resize the window
-  center_window(root, 1000, 800)
-  """
-  This function prints a message when the Y button is clicked.
-  """
-  label_x = tk.Label(root, text="выбери за кого играеш!", font=("Helvetica", 40))
+    # Центрируем и изменяем размер окна
+    center_window(current_window, 1000, 800)
 
-# Create the main windw
+    # Создаем надпись в новом окне
+
+
+
+def on_button_clicked():
+    print("Кнопка нажата!")
+
+
+# Создаем главное окно
 root = tk.Tk()
 
-# Set the background color to gray
+# Устанавливаем цвет фона серым
 root.config(bg='gray')
 
-# Center and resize the window
+# Центрируем и изменяем размер главного окна
 center_window(root, 1000, 800)
 
-# Create the X button with a large font
+# Создаем кнопку X с крупным шрифтом
 button_x = tk.Button(root, text="X", command=on_button_click_x, width=10, height=2, font=("Helvetica", 120))
 
-# Create a label with instructions
+# Создаем надпись с инструкциями
 label_x = tk.Label(root, text="выбери за кого играеш!", font=("Helvetica", 40))
 
-# Create the Y button with a large font
-button_y = tk.Button(root, text="0", command=on_button_click_y, width=10, height=2, font=("Helvetica", 120))
+# Создаем кнопку Y с крупным шрифтом
+button_y = tk.Button(root, text="Y", command=on_button_click_y, width=10, height=2, font=("Helvetica", 120))
 
-# Add padding between buttons when placing them in the window
+# Устанавливаем отступ между виджетами при размещении их в окне
 button_x.pack(pady=20)
 button_y.pack(pady=20)
 label_x.pack()
 
 root.mainloop()
-
