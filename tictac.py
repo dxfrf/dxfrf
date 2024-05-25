@@ -14,7 +14,6 @@ def center_window(window, width=500, height=500):
 
     window.geometry(f'{width}x{height}+{x}+{y}')
 
-
 def on_button_click_x():
     # Создаем новое окно
     current_window = tk.Toplevel(root)
@@ -63,6 +62,7 @@ def on_button_clicked(btn_text, *args):
 root = tk.Tk()
 
 # Устанавливаем цвет фона серым
+# или не серым
 root.config(bg='gray')
 
 # Центрируем и изменяем размер главного окна
